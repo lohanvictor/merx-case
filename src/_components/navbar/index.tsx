@@ -14,11 +14,11 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`border-r-[1px] border-gray-400 flex flex-col bg-[#fafafa] w-full sm:w-60 ${
+      className={`border-r-[1px] border-gray-400 flex flex-col bg-[#fafafa] w-full sm:w-60 md:w-[400px] ${
         isOpen ? "h-dvh fixed" : ""
       }`}
     >
-      <div className="p-5 border-b-[1px] border-gray-400 h-20 min-h-20 max-h-20 flex items-center justify-between">
+      <div className="p-5 border-b-[1px] border-gray-400 h-28 flex items-center justify-between">
         <Logo />
         <button className="block sm:hidden" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
@@ -34,11 +34,11 @@ export default function Navbar() {
             <h3 className="text-[#646c7c] uppercase tracking-wide font-semibold text-sm mb-3">
               {section.title}
             </h3>
-            <ul className="flex flex-col gap-3">
+            <ul className="flex flex-col gap-1">
               {section.items.map((item) => (
                 <li className="w-full" key={item.label}>
                   <Link
-                    className={`flex items-center p-3 pr-0 w-full rounded-md hover:bg-[#f4f4f5] text-[#24242f] font-medium ${
+                    className={`flex items-center pl-3 py-2 pr-0 w-full rounded-md hover:bg-[#f4f4f5] text-[#34343f] font-medium ${
                       pathname === item.href ? "bg-[#f4f4f5] font-semibold" : ""
                     }`}
                     href={item.href}

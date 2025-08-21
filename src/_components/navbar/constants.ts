@@ -5,10 +5,10 @@ import {
   LucideProps,
   Settings,
   TrendingUp,
-  User,
+  Users,
   Wheat,
 } from "lucide-react";
-import { ForwardRefExoticComponent, JSX, RefAttributes } from "react";
+import { ForwardRefExoticComponent, RefAttributes } from "react";
 
 export type NavItem = {
   label: string;
@@ -37,7 +37,7 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     title: "Gerenciamento",
     items: [
-      { label: "Usuários", href: "/users", icon: User },
+      { label: "Usuários", href: "/users", icon: Users },
       { label: "Configurações", href: "/settings", icon: Settings },
     ],
   },
