@@ -1,5 +1,5 @@
 import { Inter } from "next/font/google";
-import { Metadata } from "next";
+import { Metadata, Viewport } from "next";
 
 import "./globals.css";
 
@@ -13,6 +13,11 @@ export const metadata: Metadata = {
   description: "Página principal",
 };
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -20,7 +25,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} antialiased`}>{children}</body>
+      <body className={`${inter.variable} antialiased w-dvw h-dvh flex flex-col sm:flex-row`}>
+        {children}
+      </body>
     </html>
   );
 }
