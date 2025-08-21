@@ -1,7 +1,21 @@
+import {
+  ChartColumn,
+  DollarSign,
+  House,
+  LucideProps,
+  Settings,
+  TrendingUp,
+  User,
+  Wheat,
+} from "lucide-react";
+import { ForwardRefExoticComponent, JSX, RefAttributes } from "react";
+
 export type NavItem = {
   label: string;
   href: string;
-  icon: React.ReactNode;
+  icon: ForwardRefExoticComponent<
+    Omit<LucideProps, "ref"> & RefAttributes<SVGSVGElement>
+  >;
 };
 
 export type NavSection = {
@@ -13,18 +27,18 @@ export const NAV_SECTIONS: NavSection[] = [
   {
     title: "Navegação Principal",
     items: [
-      { label: "Dashboard", href: "/dashboard", icon: null },
-      { label: "Commodities", href: "/commodities", icon: null },
-      { label: "Análise", href: "/analysis", icon: null },
-      { label: "Relatórios", href: "/reports", icon: null },
-      { label: "Câmbio", href: "/exchange", icon: null },
+      { label: "Dashboard", href: "/dashboard", icon: House },
+      { label: "Commodities", href: "/commodities", icon: Wheat },
+      { label: "Análise", href: "/analysis", icon: TrendingUp },
+      { label: "Relatórios", href: "/reports", icon: ChartColumn },
+      { label: "Câmbio", href: "/exchange", icon: DollarSign },
     ],
   },
   {
-    title: 'Gerenciamento',
+    title: "Gerenciamento",
     items: [
-      { label: "Usuários", href: "/users", icon: null },
-      { label: "Configurações", href: "/settings", icon: null },
+      { label: "Usuários", href: "/users", icon: User },
+      { label: "Configurações", href: "/settings", icon: Settings },
     ],
-  }
+  },
 ];

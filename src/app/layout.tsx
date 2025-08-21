@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import { Metadata, Viewport } from "next";
 
 import "./globals.css";
+import Navbar from "@/_components/navbar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -26,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} antialiased w-dvw h-dvh flex flex-col sm:flex-row`}>
+        <Navbar />
         {children}
       </body>
     </html>
