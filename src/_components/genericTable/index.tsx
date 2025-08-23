@@ -43,7 +43,7 @@ export default function GenericTable<T>(props: GenericTableProps<T>) {
       if (prev && prev.key === key) {
         return { key, direction: prev.direction === "up" ? "down" : "up" };
       }
-      return { key, direction: "up" };
+      return { key, direction: "down" };
     });
   }
 

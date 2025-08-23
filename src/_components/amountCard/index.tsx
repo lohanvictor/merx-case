@@ -22,7 +22,9 @@ export default function AmountCard(props: Props) {
       className={`border-3 rounded-lg p-6 shadow-xs ${props.containerClassname} flex flex-col w-full gap-1`}
     >
       <div className="flex justify-between">
-        <span className="text-xl font-bold text-gray-900">{props.label}</span>
+        <span className="text-lg 2xl:text-xl font-bold text-gray-900">
+          {props.label}
+        </span>
         <props.icon.element size={28} className={props.icon.className} />
       </div>
       <div className="">
@@ -34,7 +36,9 @@ export default function AmountCard(props: Props) {
         )}
       </div>
       <div className="flex justify-between items-center">
-        <span className="text-gray-600 text-base font-medium">{props.date}</span>
+        <span className="text-gray-600 text-base font-medium">
+          {props.date}
+        </span>
 
         <span
           className={`inline-flex items-center justify-center px-2 py-1 text-base font-medium rounded-full ${
