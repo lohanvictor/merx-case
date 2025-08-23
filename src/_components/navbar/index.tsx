@@ -31,7 +31,7 @@ export default function Navbar() {
       >
         {NAV_SECTIONS.map((section) => (
           <div className="p-2 pr-0" key={section.title}>
-            <h3 className="text-gray-500 uppercase tracking-wide font-semibold text-sm mb-3">
+            <h3 className="text-gray-500 uppercase tracking-wide font-bold text-sm mb-3">
               {section.title}
             </h3>
             <ul className="flex flex-col gap-1">
