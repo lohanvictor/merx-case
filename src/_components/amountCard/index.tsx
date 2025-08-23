@@ -37,11 +37,11 @@ export default function AmountCard(props: Props) {
         <span className="text-gray-600 text-xs font-medium">{props.date}</span>
 
         <span
-          className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium ${
+          className={`inline-flex items-center justify-center px-2 py-1 text-xs font-medium rounded-full ${
             props.percentage > 0
               ? "text-green-800 bg-green-100"
               : "text-red-800 bg-red-100"
-          } rounded-full`}
+          }`}
         >
           {props.percentage}%
         </span>
