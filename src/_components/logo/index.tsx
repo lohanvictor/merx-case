@@ -6,7 +6,7 @@ export default function Logo() {
       <div className="w-12 h-12 flex justify-center items-center bg-green-600 rounded-lg">
         <Wheat size={28} color="#fff" />
       </div>
-      <h1 className="text-gray-900 text-2xl font-extrabold">AgroData</h1>
+      <h1 className="text-gray-900 text-xl 2xl:text-2xl font-extrabold">AgroData</h1>
     </div>
   );
 }

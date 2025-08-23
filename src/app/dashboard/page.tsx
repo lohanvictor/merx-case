@@ -4,12 +4,12 @@ import { DollarSign, TrendingUp, Wheat } from "lucide-react";
 
 export default function DashboardPage() {
   return (
-    <div className="flex flex-col items-center w-full h-full bg-white">
+    <div className="flex flex-col items-center w-full h-full bg-white overflow-y-auto">
       <Header
         title="Dashboard Agrícola"
         subtitle="Monitoramento de Commodities em Tempo Real"
       />
-      <main className="p-6 w-full">
+      <main className="p-6 w-full flex flex-col gap-3 sm:gap-6">
         <section className="w-full grid grid-cols-1 md:grid-cols-[repeat(auto-fill,minmax(450px,1fr))] gap-3 sm:gap-6">
           <AmountCard
             label="Soja"
