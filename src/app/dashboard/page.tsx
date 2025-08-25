@@ -1,7 +1,6 @@
 import AmountCard from "@/_components/amountCard";
-import GenericTable, { GenericTableColumn } from "@/_components/genericTable";
 import Header from "@/_components/header";
-import { DollarSign, TrendingUp, Wheat, Wifi } from "lucide-react";
+import { DollarSign, TrendingUp, Wheat } from "lucide-react";
 
 import { DashboardService, DashboardTimeSerie, PeriodFilter } from "./service";
 import ApiKeySetup from "@/_components/apiKeySetup";
@@ -69,13 +68,6 @@ export default async function DashboardPage(props: Props) {
 
           {apiKey && wheatBalance && soyBalance && dollarBalance && (
             <>
-              <section className="w-full border bg-green-50 border-green-300 p-8 py-6 rounded-lg flex items-center gap-3 text-green-700">
-                <Wifi className="sm:block hidden" />
-                <span className="text-lg font-medium">
-                  Dados atualizados - Próxima atualização em 5 segundos
-                </span>
-              </section>
-
               <section className="w-full grid grid-cols-1 xl:grid-cols-3 gap-3 sm:gap-6">
                 <AmountCard
                   label="Soja"

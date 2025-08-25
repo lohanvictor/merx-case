@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 
 import { NAV_SECTIONS } from "./constants";
@@ -11,6 +11,12 @@ import Logo from "../logo";
 export default function Navbar() {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
+
+  function handleNavigation(href: string) {
+    setIsOpen(false);
+    router.push(href);
+  }
 
   return (
     <nav
@@ -42,6 +48,7 @@ export default function Navbar() {
                       pathname === item.href ? "bg-gray-200 font-semibold" : ""
                     }`}
                     href={item.href}
+                    onClick={() => handleNavigation(item.href)}
                   >
                     <item.icon
                       className="inline-block mr-4"
