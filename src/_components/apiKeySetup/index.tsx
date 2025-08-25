@@ -29,12 +29,12 @@ export default function ApiKeySetup(props: Props) {
 
   if (!props.apiKey || isEdit) {
     return (
-      <section className="w-full border bg-blue-50 border-blue-300 p-8 py-6 rounded-lg flex items-center gap-3 text-blue-700">
-        <Key />
-        <span className="text-lg font-medium">
+      <section className="w-full border bg-blue-50 border-blue-300 p-8 py-6 rounded-lg flex flex-col sm:flex-row sm:items-center gap-3 text-blue-700">
+        <Key className="sm:block hidden" />
+        <span className="text-lg font-medium text-center sm:text-left">
           {isEdit ? "Edite sua API Key" : "API Key não está definida"}
         </span>
-        <form className="ml-auto flex gap-2">
+        <form className="sm:ml-auto gap-2 flex flex-col sm:flex-row sm:items-center">
           <input
             type="text"
             name="apiKey"
@@ -50,21 +50,23 @@ export default function ApiKeySetup(props: Props) {
           >
             Salvar
           </button>
-          <button
-            type="button"
-            onClick={() => setIsEdit(false)}
-            className="text-base font-medium bg-white hover:cursor-pointer text-gray-900 border rounded-md border-gray-300 p-2"
-          >
-            Voltar
-          </button>
+          {isEdit && (
+            <button
+              type="button"
+              onClick={() => setIsEdit(false)}
+              className="text-base font-medium bg-white hover:cursor-pointer text-gray-900 border rounded-md border-gray-300 p-2"
+            >
+              Voltar
+            </button>
+          )}
         </form>
       </section>
     );
   }
 
   return (
-    <section className="w-full border bg-blue-50 border-blue-300 p-8 py-6 rounded-lg flex items-center gap-3 text-blue-700">
-      <Key />
+    <section className="w-full border bg-blue-50 border-blue-300 p-8 py-6 rounded-lg flex flex-col sm:flex-row sm:items-center gap-3 text-blue-700">
+      <Key className="sm:block hidden" />
       <span className="text-lg font-medium">
         API Key configurada para dados reais
       </span>

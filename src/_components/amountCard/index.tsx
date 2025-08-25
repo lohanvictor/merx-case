@@ -47,7 +47,7 @@ export default function AmountCard(props: Props) {
               : "text-red-800 bg-red-100"
           }`}
         >
-          {props.percentage}%
+          {props.percentage.toFixed(2)}%
         </span>
       </div>
     </div>
