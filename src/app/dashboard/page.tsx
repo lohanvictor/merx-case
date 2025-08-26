@@ -1,5 +1,4 @@
 import AmountCard from "@/_components/amountCard";
-import Header from "@/_components/header";
 import { DollarSign, TrendingUp, Wheat } from "lucide-react";
 
 import { DashboardService, DashboardTimeSerie, PeriodFilter } from "./service";
