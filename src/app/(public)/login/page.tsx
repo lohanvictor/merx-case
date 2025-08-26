@@ -21,7 +21,7 @@ export default async function LoginPage(props: Props) {
       return;
     }
 
-    const response = await LoginService.post(
+    const response = await LoginService.login(
       email.toString(),
       password.toString()
     );

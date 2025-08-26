@@ -8,10 +8,12 @@ export class LoginService {
    * @param password A senha do usuário.
    * @returns O token de autenticação.
    */
-  static async post(
+  static async login(
     email: string,
     password: string
   ): Promise<{ token: string; name: string } | null> {
+    console.log('URL', process.env.URL)
+    console.log('PARAMS', { email, password })
     try {
       const response = await ApiService.post<{ token: string; name: string }>(
         `${process.env.URL}/api/login`,
