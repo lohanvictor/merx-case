@@ -1,6 +1,7 @@
 import Header from "@/_components/header";
-import { ApiService } from "@/_service/api";
 import { redirect } from "next/navigation";
+import { LoginService } from "./service";
+import { cookies } from "next/headers";
 
 export default function LoginPage() {
   async function handleSubmit(form: FormData) {
@@ -8,11 +9,18 @@ export default function LoginPage() {
     const email = form.get("email");
     const password = form.get("password");
 
-    await ApiService.post("/api/login", {
-      email,
-      password,
-    });
-    redirect("/dashboard?periodo=7_DAYS");
+    if (!email || !password) {
+      return;
+    }
+
+    const token = await LoginService.post(
+      email.toString(),
+      password.toString()
+    );
+    if (token) {
+      (await cookies()).set("token", token);
+      redirect("/dashboard?periodo=7_DAYS");
+    }
   }
 
   return (

@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 const CREDENTIAL = {
@@ -18,12 +19,9 @@ export async function POST(request: NextResponse) {
   if (email === CREDENTIAL.email && password === CREDENTIAL.password) {
     // Se a autenticação for bem-sucedida, você pode retornar um token ou uma resposta de sucesso
     return NextResponse.json(
-      { message: "Login bem-sucedido!" },
+      { token: 'mocked_token' },
       {
         status: 200,
-        headers: {
-          "Set-Cookie": `token=mocked_token; Path=/; HttpOnly`,
-        },
       }
     );
   }
