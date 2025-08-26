@@ -3,7 +3,14 @@ import { redirect } from "next/navigation";
 import { LoginService } from "./service";
 import { cookies } from "next/headers";
 
-export default function LoginPage() {
+type Props = {
+  searchParams: Promise<{
+    error?: string;
+  }>;
+};
+
+export default async function LoginPage(props: Props) {
+  const params = await props.searchParams;
   async function handleSubmit(form: FormData) {
     "use server";
     const email = form.get("email");
@@ -20,6 +27,8 @@ export default function LoginPage() {
     if (token) {
       (await cookies()).set("token", token);
       redirect("/dashboard?periodo=7_DAYS");
+    } else {
+      redirect("/login?error=invalid_credentials");
     }
   }
 
@@ -55,6 +64,9 @@ export default function LoginPage() {
           >
             Entrar
           </button>
+          {params.error === "invalid_credentials" && (
+            <p className="text-red-500 text-right">Credenciais inválidas.</p>
+          )}
         </form>
       </main>
     </div>
