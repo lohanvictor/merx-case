@@ -15,6 +15,11 @@ export type DashboardTimeSerie = {
   value: string;
 };
 
+type CommodityApiError = {
+  success: false;
+  error: { code: number; type: string; info: string };
+};
+
 export class DashboardService {
   static async getCommodityBalanceTimeSeries(
     filters: Filters
@@ -40,6 +45,21 @@ export class DashboardService {
     return DashboardUtils.commodityBalanceToTimeSeries(
       response,
       filters.mapper
+    );
+  }
+
+  static isCommodityApiError(error: unknown): error is CommodityApiError {
+    return (
+      typeof error === "object" &&
+      error !== null &&
+      "success" in error &&
+      error.success === false &&
+      "error" in error &&
+      typeof error.error === "object" &&
+      error.error !== null &&
+      "code" in error.error &&
+      "type" in error.error &&
+      "info" in error.error
     );
   }
 }

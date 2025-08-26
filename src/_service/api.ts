@@ -1,5 +1,5 @@
 export class ApiService {
-  static async get<T>(url: string, params?: Record<string, string>) {
+  static async get<T = any>(url: string, params?: Record<string, string>) {
     if (params) {
       url += `?${new URLSearchParams(params).toString()}`;
     }
@@ -9,6 +9,11 @@ export class ApiService {
         "Content-Type": "application/json",
       },
     });
+
+    if (!response.ok) {
+      const error = await response.json();
+      return Promise.reject(error);
+    }
 
     return response.json() as T;
   }

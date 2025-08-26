@@ -2,7 +2,7 @@
 import GenericTable, { GenericTableColumn } from "@/_components/genericTable";
 import { DashboardUtils } from "../../utils";
 
-export type DashboardTableData = {
+export type SeriesTableData = {
   date: string;
   dollar: string;
   wheat: string;
@@ -10,11 +10,11 @@ export type DashboardTableData = {
 };
 
 type Props = {
-  data: DashboardTableData[];
+  data: SeriesTableData[];
 };
 
-export default function DashboardTable({ data }: Props) {
-  const columns: GenericTableColumn<DashboardTableData>[] = [
+export default function SeriesTable({ data }: Props) {
+  const columns: GenericTableColumn<SeriesTableData>[] = [
     {
       key: "date",
       label: "Data",
@@ -25,16 +25,19 @@ export default function DashboardTable({ data }: Props) {
       key: "soy",
       label: "Soja",
       sortable: true,
+      render: (item) => "$ " + item.soy,
     },
     {
       key: "wheat",
       label: "Trigo",
       sortable: true,
+      render: (item) => "$ " + item.wheat,
     },
     {
       key: "dollar",
       label: "USD/BRL",
       sortable: true,
+      render: (item) => "R$ " + item.dollar,
     },
   ];
   return <GenericTable data={data} columns={columns} />;
