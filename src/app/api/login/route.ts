@@ -1,12 +1,11 @@
-import { cookies } from "next/headers";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 const CREDENTIAL = {
   email: "teste@teste.com",
   password: "123",
 };
 
-export async function POST(request: NextResponse) {
+export async function POST(request: NextRequest) {
   const { email, password } = await request.json();
 
   if (!email || !password) {

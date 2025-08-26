@@ -8,7 +8,7 @@ import {
 export class DashboardUtils {
   static commodityBalanceToTimeSeries(
     data: CommodityTimeSeriesResponse,
-    mapper: (value: any) => string
+    mapper: (value: unknown) => string
   ): DashboardTimeSerie[] {
     return Object.entries(data.data.rates).map<DashboardTimeSerie>(
       ([date, rates]) => {

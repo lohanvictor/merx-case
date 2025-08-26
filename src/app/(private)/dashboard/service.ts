@@ -7,7 +7,7 @@ export type PeriodFilter = "7_DAYS" | "30_DAYS" | "90_DAYS";
 type Filters = {
   period: PeriodFilter;
   symbol: string;
-  mapper(value: any): string;
+  mapper(value: unknown): string;
 };
 
 export type DashboardTimeSerie = {
@@ -71,6 +71,6 @@ export type CommodityTimeSeriesResponse = {
     start_date: Date;
     end_date: Date;
     base: string;
-    rates: Record<string, any>;
+    rates: Record<string, unknown>;
   };
 };

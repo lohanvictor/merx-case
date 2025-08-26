@@ -47,15 +47,9 @@ export default async function DashboardPage(props: Props) {
           mapper: (value: { SM00: number }) => (value.SM00 * 1000).toFixed(2),
         }),
       ]);
-      dollarBalance = [
-        { date: "2025-08-23", value: "2.3" },
-      ] as DashboardTimeSerie[];
-      wheatBalance = [
-        { date: "2025-08-23", value: "1.5" },
-      ] as DashboardTimeSerie[];
-      soyBalance = [
-        { date: "2025-08-23", value: "3.1" },
-      ] as DashboardTimeSerie[];
+      dollarBalance = _dollarBalance;
+      wheatBalance = _wheatBalance;
+      soyBalance = _soyBalance;
 
       zipBalances = dollarBalance.map((dollarItem, index) => ({
         date: dollarItem.date,

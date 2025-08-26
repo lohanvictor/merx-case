@@ -9,13 +9,18 @@ export type GenericTableColumn<T> = {
   sortable?: boolean;
 };
 
-export type GenericTableProps<T> = {
-  data: Array<T | any>;
+export type GenericTableProps<T extends Record<string, string | number>> = {
+  data: Array<T>;
   columns: Array<GenericTableColumn<T>>;
   loading?: boolean;
 };
 
-function compare(a: any, b: any, key: string, direction: "up" | "down") {
+function compare(
+  a: Record<string, string | number>,
+  b: Record<string, string | number>,
+  key: string,
+  direction: "up" | "down"
+) {
   const aValue = a[key];
   const bValue = b[key];
 
@@ -24,7 +29,9 @@ function compare(a: any, b: any, key: string, direction: "up" | "down") {
   return 0;
 }
 
-export default function GenericTable<T>(props: GenericTableProps<T>) {
+export default function GenericTable<T extends Record<string, string | number>>(
+  props: GenericTableProps<T>
+) {
   const [sort, setSort] = useState<{
     key: string;
     direction: "up" | "down";
@@ -36,7 +43,7 @@ export default function GenericTable<T>(props: GenericTableProps<T>) {
     return [...props.data].sort((a, b) =>
       compare(a, b, sort.key, sort.direction)
     );
-  }, [sort?.direction, sort?.key, sort]);
+  }, [sort, props.data]);
 
   function handleSort(key: string) {
     setSort((prev) => {

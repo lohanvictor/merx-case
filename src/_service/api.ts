@@ -1,5 +1,5 @@
 export class ApiService {
-  static async get<T = any>(url: string, params?: Record<string, string>) {
+  static async get<T = unknown>(url: string, params?: Record<string, string>) {
     if (params) {
       url += `?${new URLSearchParams(params).toString()}`;
     }
@@ -18,7 +18,7 @@ export class ApiService {
     return response.json() as T;
   }
 
-  static async post<T = any>(url: string, data: any) {
+  static async post<T = unknown>(url: string, data: unknown) {
     const response = await fetch(url, {
       method: "POST",
       headers: {
