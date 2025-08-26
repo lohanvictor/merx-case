@@ -3,10 +3,12 @@
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import { Menu, X } from "lucide-react";
 
 import { PRIVATE_NAV_SECTIONS, PUBLIC_NAV_SECTIONS } from "./constants";
-import { Menu, X } from "lucide-react";
 import Logo from "../logo";
+import LogoutButton from "../logoutButton";
+import User from "../user";
 
 type Props = {
   section: "public" | "private";
@@ -38,8 +40,8 @@ export default function Navbar({ section }: Props) {
         </button>
       </div>
       <div
-        className={`flex flex-col gap-4 w-full bg-gray-100 h-full sm:block ${
-          isOpen ? "block sm:h-full" : "hidden"
+        className={`flex gap-4 w-full bg-gray-100 h-full flex-col sm:flex ${
+          isOpen ? "flex sm:h-full" : "hidden"
         }`}
       >
         {sections.map((section) => (
@@ -69,6 +71,10 @@ export default function Navbar({ section }: Props) {
             </ul>
           </div>
         ))}
+        <div className="mt-auto w-full flex flex-row justify-between items-center p-2 border-t border-gray-400">
+          <User />
+          <LogoutButton />
+        </div>
       </div>
     </nav>
   );

@@ -12,7 +12,7 @@ export default function NotFoundPage() {
         </h2>
       </div>
 
-      <Link href="/">Voltar para a página inicial</Link>
+      <Link href="/" className="underline text-blue-500">Voltar para a página inicial</Link>
     </section>
   );
 }

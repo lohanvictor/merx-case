@@ -20,12 +20,15 @@ export default async function LoginPage(props: Props) {
       return;
     }
 
-    const token = await LoginService.post(
+    const response = await LoginService.post(
       email.toString(),
       password.toString()
     );
-    if (token) {
-      (await cookies()).set("token", token);
+    if (response) {
+      const cookie = await cookies();
+      cookie.set("token", response.token);
+      cookie.set("name", response.name);
+      cookie.set("email", email.toString());
       redirect("/dashboard?periodo=7_DAYS");
     } else {
       redirect("/login?error=invalid_credentials");

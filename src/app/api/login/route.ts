@@ -18,7 +18,7 @@ export async function POST(request: NextRequest) {
   if (email === CREDENTIAL.email && password === CREDENTIAL.password) {
     // Se a autenticação for bem-sucedida, você pode retornar um token ou uma resposta de sucesso
     return NextResponse.json(
-      { token: 'mocked_token' },
+      { token: "mocked_token", name: "Agro User" },
       {
         status: 200,
       }

@@ -3,23 +3,29 @@ import { ApiService } from "@/_service/api";
 export class LoginService {
   /**
    * Faz uma requisição de login para a API Route handler.
-   * 
+   *
    * @param email O email do usuário.
    * @param password A senha do usuário.
    * @returns O token de autenticação.
    */
-  static async post(email: string, password: string): Promise<string> {
+  static async post(
+    email: string,
+    password: string
+  ): Promise<{ token: string; name: string } | null> {
     try {
-      const response = await ApiService.post<{ token: string }>(
+      const response = await ApiService.post<{ token: string; name: string }>(
         `${process.env.URL}/api/login`,
         {
           email,
           password,
         }
       );
-      return response.token;
+      return {
+        token: response.token,
+        name: response.name,
+      };
     } catch {
-      return "";
+      return null;
     }
   }
 }
