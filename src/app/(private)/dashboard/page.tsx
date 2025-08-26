@@ -18,6 +18,7 @@ export default async function DashboardPage(props: Props) {
   const params = await props.searchParams;
   const apiKey = (await cookies()).get("apiKey");
 
+  // Define variáveis para armazenar os dados das séries temporais
   let dollarBalance: DashboardTimeSerie[] | null = null;
   let wheatBalance: DashboardTimeSerie[] | null = null;
   let soyBalance: DashboardTimeSerie[] | null = null;
@@ -30,6 +31,7 @@ export default async function DashboardPage(props: Props) {
 
   if (apiKey) {
     try {
+      // Busca os dados das séries temporais para Dollar, Trigo e Soja
       const [_dollarBalance, _wheatBalance, _soyBalance] = await Promise.all([
         DashboardService.getCommodityBalanceTimeSeries({
           period: params.periodo || "7_DAYS",
@@ -47,10 +49,12 @@ export default async function DashboardPage(props: Props) {
           mapper: (value: { SM00: number }) => (value.SM00 * 1000).toFixed(2),
         }),
       ]);
+      // Atribui os dados das séries temporais às variáveis correspondentes
       dollarBalance = _dollarBalance;
       wheatBalance = _wheatBalance;
       soyBalance = _soyBalance;
 
+      // Cria um zip das variáveis
       zipBalances = dollarBalance.map((dollarItem, index) => ({
         date: dollarItem.date,
         dollar: dollarItem.value,
@@ -58,6 +62,7 @@ export default async function DashboardPage(props: Props) {
         soy: soyBalance ? soyBalance[index]?.value : "-",
       }));
     } catch (error: unknown) {
+      // Caso ocorra um erro durante a requisição, é exibido um componente de erro
       if (DashboardService.isCommodityApiError(error)) {
         const { code } = error.error;
 

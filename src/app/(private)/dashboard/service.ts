@@ -21,6 +21,20 @@ type CommodityApiError = {
 };
 
 export class DashboardService {
+  /**
+   * Obtém a série temporal de saldo de uma commodity.
+   * 
+   * @param filters Os filtros a serem aplicados na busca.
+   * @example
+   * ```typescript
+   * {
+   *   period: "7_DAYS",
+   *   symbol: "BRL",
+   *   mapper: (value) => value.BRL.toFixed(2),
+   * }
+   * ```
+   * @returns Uma _promise_ com os dados da série temporal.
+   */
   static async getCommodityBalanceTimeSeries(
     filters: Filters
   ): Promise<DashboardTimeSerie[]> {
@@ -48,6 +62,12 @@ export class DashboardService {
     );
   }
 
+  /**
+   * Verifica se um erro é um erro da API de commodities.
+   * 
+   * @param error O erro a ser verificado.
+   * @returns Um _boolean_ indicando se o erro é da API de commodities. A variável de erro fica com o tipo `CommodityApiError`.
+   */
   static isCommodityApiError(error: unknown): error is CommodityApiError {
     return (
       typeof error === "object" &&

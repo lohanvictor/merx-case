@@ -12,7 +12,6 @@ export type GenericTableColumn<T> = {
 export type GenericTableProps<T extends Record<string, string | number>> = {
   data: Array<T>;
   columns: Array<GenericTableColumn<T>>;
-  loading?: boolean;
 };
 
 function compare(

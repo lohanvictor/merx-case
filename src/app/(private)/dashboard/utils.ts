@@ -6,6 +6,13 @@ import {
 } from "./service";
 
 export class DashboardUtils {
+  /**
+   * Converte a resposta da API de commodities em uma série temporal.
+   * 
+   * @param data A resposta da API de commodities.
+   * @param mapper A função de mapeamento a ser aplicada aos valores.
+   * @returns Uma série temporal de dados formatados.
+   */
   static commodityBalanceToTimeSeries(
     data: CommodityTimeSeriesResponse,
     mapper: (value: unknown) => string
@@ -20,6 +27,12 @@ export class DashboardUtils {
     );
   }
 
+  /**
+   * Formata as datas de início e fim com base no período selecionado.
+   * 
+   * @param period O período selecionado.
+   * @returns Um objeto contendo as datas de início e fim.
+   */
   static formatFilterDate(period: PeriodFilter): {
     startDate: Date;
     endDate: Date;
@@ -41,6 +54,12 @@ export class DashboardUtils {
     }
   }
 
+  /**
+   * Calcula a variação percentual entre o primeiro e o último valor de uma série temporal.
+   * 
+   * @param series A série temporal a ser analisada.
+   * @returns A variação percentual entre o primeiro e o último valor.
+   */
   static getPercentage(series: DashboardTimeSerie[]): number {
     if (series.length < 2) return 0;
 

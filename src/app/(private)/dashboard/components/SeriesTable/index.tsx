@@ -13,6 +13,13 @@ type Props = {
   data: SeriesTableData[];
 };
 
+/**
+ * Componente de tabela para exibir dados de séries temporais. Foi utilizado o componente GenericTable para renderizar a tabela.
+ * Porém, para cada coluna foi necessário definir um renderizador específico, logo teve que ser criado um _client component_.
+ *
+ * @param data: SeriesTableData[]
+ * @returns
+ */
 export default function SeriesTable({ data }: Props) {
   const columns: GenericTableColumn<SeriesTableData>[] = [
     {
