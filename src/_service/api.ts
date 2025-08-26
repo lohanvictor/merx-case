@@ -26,12 +26,12 @@ export class ApiService {
 
   /**
    * Faz uma requisição POST para a API.
-   * 
+   *
    * @param url A URL da API.
    * @param data Os dados a serem enviados no corpo da requisição.
    * @returns Os dados da resposta da API.
    */
-  static async post<T = unknown>(url: string, data: unknown) {
+  static async post<T = unknown>(url: string, data: unknown): Promise<T> {
     const response = await fetch(url, {
       method: "POST",
       headers: {
@@ -46,5 +46,15 @@ export class ApiService {
     }
 
     return response.json() as T;
+  }
+
+  static baseInternalUrl(): string {
+    if (process.env.NODE_ENV === "production" && process.env.VERCEL_URL) {
+      return `https://${process.env.VERCEL_URL}`;
+    } else {
+      const host = process.env.HOSTNAME || "localhost";
+      const port = process.env.PORT || "3000";
+      return `http://${host}:${port}`;
+    }
   }
 }
