@@ -90,3 +90,12 @@ O arquivo docker foi retirado de um [template](https://github.com/vercel/next.js
 ### Skeleton Loader
 
 Foi utilizado a implementação do Skeleton Loader do [Flowbite](https://flowbite.com/docs/components/skeleton/).
+
+### Login Fake
+
+A implementação de login está apenas mockada com dados fixos. Logo, para acessar com o login correto, basta inserir:
+
+|Campo|Valor|
+|-----|-----|
+|E-mail|teste@teste.com|
+|Senha|123|
