@@ -43,7 +43,7 @@ export default function Navbar({ section }: Props) {
     >
       <div className="p-5 border-b-[1px] border-gray-400 h-28 flex items-center justify-between">
         <Logo />
-        <button className="block sm:hidden" onClick={() => setIsOpen(!isOpen)}>
+        <button className="block sm:hidden hover:cursor-pointer" onClick={() => setIsOpen(!isOpen)}>
           {isOpen ? <X /> : <Menu />}
         </button>
       </div>

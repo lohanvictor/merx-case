@@ -13,7 +13,6 @@ export class LoginService {
     password: string
   ): Promise<{ token: string; name: string } | null> {
     const baseUrl = ApiService.baseInternalUrl();
-    console.log('BASE URL:', baseUrl);
 
     try {
       const response = await ApiService.post<{ token: string; name: string }>(

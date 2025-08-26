@@ -64,7 +64,7 @@ export default async function LoginPage(props: Props) {
           />
           <button
             type="submit"
-            className="w-full p-2 bg-blue-500 text-white rounded"
+            className="w-full p-2 bg-blue-500 text-white rounded hover:cursor-pointer"
           >
             Entrar
           </button>

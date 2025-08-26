@@ -23,7 +23,7 @@ export default function LogoutButton({ classname }: Props) {
   return (
     <>
       <button
-        className={`px-4 py-2    flex items-center gap-2 border rounded border-gray-300 text-gray-600 bg-white hover:bg-gray-100 hover:cursor-pointer ${classname}`}
+        className={`px-4 py-2 flex items-center gap-2 border rounded border-gray-300 text-gray-600 bg-white hover:bg-gray-100 hover:cursor-pointer ${classname}`}
         onClick={() => setIsModalOpen(true)}
       >
         <LogOut size={20} /> <span className="font-medium text-sm">Logout</span>
