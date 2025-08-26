@@ -9,6 +9,7 @@ import { DashboardUtils } from "./utils";
 import SeriesTable from "./components/SeriesTable";
 import FilterSelect from "./components/FilterSelect";
 import ErrorPage from "./components/ErrorPage";
+import { API_KEY_COOKIE_NAME } from "@/_constants";
 
 type Props = {
   searchParams: Promise<{ periodo?: PeriodFilter }>;
@@ -16,7 +17,7 @@ type Props = {
 
 export default async function DashboardPage(props: Props) {
   const params = await props.searchParams;
-  const apiKey = (await cookies()).get("apiKey");
+  const apiKey = (await cookies()).get(API_KEY_COOKIE_NAME);
 
   // Define variáveis para armazenar os dados das séries temporais
   let dollarBalance: DashboardTimeSerie[] | null = null;

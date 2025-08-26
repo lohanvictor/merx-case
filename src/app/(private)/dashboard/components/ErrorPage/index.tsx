@@ -1,5 +1,6 @@
 "use client";
 
+import { API_KEY_COOKIE_NAME } from "@/_constants";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
@@ -33,7 +34,7 @@ export default function ErrorPage({ code }: Props) {
 
   function handleReset() {
     if (code !== 500) {
-      Cookies.remove("apiKey");
+      Cookies.remove(API_KEY_COOKIE_NAME);
     }
     route.refresh();
   }

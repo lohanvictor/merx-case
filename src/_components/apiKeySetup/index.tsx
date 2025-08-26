@@ -4,6 +4,7 @@ import { Key } from "lucide-react";
 import Cookies from "js-cookie";
 import { useRef, useState } from "react";
 import { useRouter } from "next/navigation";
+import { API_KEY_COOKIE_NAME } from "@/_constants";
 
 type Props = {
   apiKey: string;
@@ -16,14 +17,14 @@ export default function ApiKeySetup(props: Props) {
 
   function handleApiKey() {
     if (apiKeyInputRef.current) {
-      Cookies.set("apiKey", apiKeyInputRef.current);
+      Cookies.set(API_KEY_COOKIE_NAME, apiKeyInputRef.current);
       setIsEdit(false);
       router.refresh();
     }
   }
 
   function handleRemoveApiKey() {
-    Cookies.remove("apiKey");
+    Cookies.remove(API_KEY_COOKIE_NAME);
     router.refresh();
   }
 

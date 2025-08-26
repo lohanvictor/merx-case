@@ -2,6 +2,7 @@ import Header from "@/_components/header";
 import { redirect } from "next/navigation";
 import { LoginService } from "./service";
 import { cookies } from "next/headers";
+import { EMAIL_COOKIE_NAME, TOKEN_COOKIE_NAME, USER_COOKIE_NAME } from "@/_constants";
 
 type Props = {
   searchParams: Promise<{
@@ -26,9 +27,9 @@ export default async function LoginPage(props: Props) {
     );
     if (response) {
       const cookie = await cookies();
-      cookie.set("token", response.token);
-      cookie.set("name", response.name);
-      cookie.set("email", email.toString());
+      cookie.set(TOKEN_COOKIE_NAME, response.token);
+      cookie.set(USER_COOKIE_NAME, response.name);
+      cookie.set(EMAIL_COOKIE_NAME, email.toString());
       redirect("/dashboard?periodo=7_DAYS");
     } else {
       redirect("/login?error=invalid_credentials");

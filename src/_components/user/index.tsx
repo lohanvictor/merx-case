@@ -1,10 +1,11 @@
 import { CircleUserRound } from "lucide-react";
 import Cookies from "js-cookie";
 import { useMemo } from "react";
+import { EMAIL_COOKIE_NAME, USER_COOKIE_NAME } from "@/_constants";
 
 export default function User() {
   const [name, email] = useMemo(() => {
-    return [Cookies.get("name"), Cookies.get("email")];
+    return [Cookies.get(USER_COOKIE_NAME), Cookies.get(EMAIL_COOKIE_NAME)];
   }, []);
 
   return (

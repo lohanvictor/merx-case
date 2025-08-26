@@ -1,6 +1,7 @@
 import { ApiService } from "@/_service/api";
 import { cookies } from "next/headers";
 import { DashboardUtils } from "./utils";
+import { API_KEY_COOKIE_NAME } from "@/_constants";
 
 export type PeriodFilter = "7_DAYS" | "30_DAYS" | "90_DAYS";
 
@@ -38,7 +39,7 @@ export class DashboardService {
   static async getCommodityBalanceTimeSeries(
     filters: Filters
   ): Promise<DashboardTimeSerie[]> {
-    const apiKey = (await cookies()).get("apiKey");
+    const apiKey = (await cookies()).get(API_KEY_COOKIE_NAME);
     if (!apiKey) throw new Error("API Key is required");
 
     const { startDate, endDate } = DashboardUtils.formatFilterDate(

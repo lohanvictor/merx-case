@@ -5,6 +5,7 @@ import { useState } from "react";
 import OptionalModal from "../optionalModal";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
+import { TOKEN_COOKIE_NAME } from "@/_constants";
 
 type Props = {
   classname?: string;
@@ -15,7 +16,7 @@ export default function LogoutButton({ classname }: Props) {
   const route = useRouter();
 
   const handleLogout = () => {
-    Cookies.remove("token");
+    Cookies.remove(TOKEN_COOKIE_NAME);
     route.push("/login");
   };
 
