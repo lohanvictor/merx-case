@@ -2,16 +2,23 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 
-import { NAV_SECTIONS } from "./constants";
+import { PRIVATE_NAV_SECTIONS, PUBLIC_NAV_SECTIONS } from "./constants";
 import { Menu, X } from "lucide-react";
 import Logo from "../logo";
 
-export default function Navbar() {
+type Props = {
+  section: "public" | "private";
+};
+
+export default function Navbar({ section }: Props) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const sections = useMemo(() => {
+    return section === "private" ? PRIVATE_NAV_SECTIONS : PUBLIC_NAV_SECTIONS;
+  }, [section]);
 
   function handleNavigation(href: string) {
     setIsOpen(false);
@@ -35,7 +42,7 @@ export default function Navbar() {
           isOpen ? "block sm:h-full" : "hidden"
         }`}
       >
-        {NAV_SECTIONS.map((section) => (
+        {sections.map((section) => (
           <div className="p-2 pr-0" key={section.title}>
             <h3 className="text-gray-500 uppercase tracking-wide font-bold text-sm mb-3">
               {section.title}

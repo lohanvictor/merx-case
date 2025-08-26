@@ -17,4 +17,21 @@ export class ApiService {
 
     return response.json() as T;
   }
+
+  static async post<T = any>(url: string, data: any) {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      return Promise.reject(error);
+    }
+
+    return response.json() as T;
+  }
 }

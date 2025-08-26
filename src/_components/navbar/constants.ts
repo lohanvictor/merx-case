@@ -23,7 +23,7 @@ export type NavSection = {
   items: NavItem[];
 };
 
-export const NAV_SECTIONS: NavSection[] = [
+export const PRIVATE_NAV_SECTIONS: NavSection[] = [
   {
     title: "Navegação Principal",
     items: [
@@ -39,6 +39,16 @@ export const NAV_SECTIONS: NavSection[] = [
     items: [
       { label: "Usuários", href: "/users", icon: Users },
       { label: "Configurações", href: "/settings", icon: Settings },
+    ],
+  },
+];
+
+export const PUBLIC_NAV_SECTIONS: NavSection[] = [
+  {
+    title: "Navegação Pública",
+    items: [
+      { label: "Página Inicial", href: "/", icon: House },
+      { label: "Login", href: "/login", icon: Users },
     ],
   },
 ];
