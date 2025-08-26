@@ -2,13 +2,15 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Menu, X } from "lucide-react";
+import Cookies from "js-cookie";
 
 import { PRIVATE_NAV_SECTIONS, PUBLIC_NAV_SECTIONS } from "./constants";
 import Logo from "../logo";
 import LogoutButton from "../logoutButton";
 import User from "../user";
+import { TOKEN_COOKIE_NAME } from "@/_constants";
 
 type Props = {
   section: "public" | "private";
@@ -21,11 +23,17 @@ export default function Navbar({ section }: Props) {
   const sections = useMemo(() => {
     return section === "private" ? PRIVATE_NAV_SECTIONS : PUBLIC_NAV_SECTIONS;
   }, [section]);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   function handleNavigation(href: string) {
     setIsOpen(false);
     router.push(href);
   }
+
+  useEffect(() => {
+    const token = Cookies.get(TOKEN_COOKIE_NAME);
+    setIsAuthenticated(!!token);
+  }, []);
 
   return (
     <nav
@@ -71,10 +79,12 @@ export default function Navbar({ section }: Props) {
             </ul>
           </div>
         ))}
-        <div className="mt-auto w-full flex flex-row justify-between items-center p-2 border-t border-gray-400">
-          <User />
-          <LogoutButton />
-        </div>
+        {isAuthenticated && (
+          <div className="mt-auto w-full flex flex-row justify-between items-center p-2 border-t border-gray-400">
+            <User />
+            <LogoutButton />
+          </div>
+        )}
       </div>
     </nav>
   );
