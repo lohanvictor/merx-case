@@ -1,14 +1,14 @@
 import { ArrayUtils } from "@/_utils/ArrayUtils";
+import { DashboardTimeSerie } from "./service";
 import {
-  DashboardTimeSerie,
   CommodityTimeSeriesResponse,
   PeriodFilter,
-} from "./service";
+} from "@/_service/commodityApi";
 
 export class DashboardUtils {
   /**
    * Converte a resposta da API de commodities em uma série temporal.
-   * 
+   *
    * @param data A resposta da API de commodities.
    * @param mapper A função de mapeamento a ser aplicada aos valores.
    * @returns Uma série temporal de dados formatados.
@@ -29,7 +29,7 @@ export class DashboardUtils {
 
   /**
    * Formata as datas de início e fim com base no período selecionado.
-   * 
+   *
    * @param period O período selecionado.
    * @returns Um objeto contendo as datas de início e fim.
    */
@@ -56,7 +56,7 @@ export class DashboardUtils {
 
   /**
    * Calcula a variação percentual entre o primeiro e o último valor de uma série temporal.
-   * 
+   *
    * @param series A série temporal a ser analisada.
    * @returns A variação percentual entre o primeiro e o último valor.
    */
@@ -74,6 +74,9 @@ export class DashboardUtils {
     return isNaN(percentage) ? 0 : percentage;
   }
 
+  /**
+   * Formata uma data no formato "YYYY-MM-DD" para "DD/MM/YYYY".
+   */
   static formatDate(value: string): string {
     try {
       const [year, month, day] = value.split("-");
