@@ -23,7 +23,7 @@ Este projeto é a implementação de um case para um processo seletivo para Dese
 
 O principal objetivo é desenvolver um dashboard web que replique o layout do print anexado, exibindo preços de commodities agrícolas (como milho, trigo e soja) integrados a APIs públicas. 
 
-O desafio avalia sua capacidade de consumir APIs,  criar interfaces responsivas, gerenciar dados e escrever código de qualidade. A funcionalidade de login é opcional.
+O desafio avalia sua capacidade de consumir APIs,  criar interfaces responsivas, gerenciar dados e escrever código de qualidade. A funcionalidade de login é opcional. É preciso ter responsividade mobile.
 
 ## Bibliotecas
 
@@ -109,15 +109,19 @@ docker compose up -d
 
 O projeto é iniciado no link [http://localhost:3000](http://localhost:3000).
 
-### Vercel
+### Vercel (online)
+
+> Lembre-se das dicas acima sobre [API Key fake](#api-key-fake) e [Login Fake](#login-fake) para acessar dados mockados
 
 A aplicação também está implantada em um projeto na Vercel:
 
 [https://merx-case.vercel.app/](https://merx-case.vercel.app/)
 
-[![Site implantado](https://imgur.com/a/Qtx6XXT)](https://merx-case.vercel.app/)
+![Menu implantado mobile](https://i.imgur.com/hD1FlPl.png)
 
-> Lembre-se das dicas acima sobre [API Key fake](#api-key-fake) e [Login Fake](#login-fake) para acessar dados mockados
+![Site implantado mobile](https://i.imgur.com/J6pOhZ8.png)
+
+![Site web](https://i.imgur.com/1O9y38R.png)
 
 ## Observações
 

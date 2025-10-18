@@ -23,6 +23,12 @@ export default function ApiKeySetup(props: Props) {
     }
   }
 
+  function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
+    if (e.key === 'Enter') {
+      handleApiKey();
+    }
+  }
+
   function handleRemoveApiKey() {
     Cookies.remove(API_KEY_COOKIE_NAME);
     router.refresh();
@@ -43,6 +49,7 @@ export default function ApiKeySetup(props: Props) {
             className="p-2 border rounded-md border-gray-300 bg-white text-gray-600"
             defaultValue={props.apiKey}
             onChange={(e) => (apiKeyInputRef.current = e.target.value)}
+            onKeyDown={handleKeyDown}
           />
           <button
             type="button"
