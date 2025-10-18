@@ -1,7 +1,7 @@
 "use client";
 
+import { PeriodFilter } from "@/_service/commodityApi";
 import { useRouter } from "next/navigation";
-import { PeriodFilter } from "../../service";
 
 type Props = {
   periodo: PeriodFilter;
