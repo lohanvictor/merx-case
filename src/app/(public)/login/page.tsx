@@ -2,7 +2,12 @@ import Header from "@/_components/header";
 import { redirect } from "next/navigation";
 import { LoginService } from "./service";
 import { cookies } from "next/headers";
-import { EMAIL_COOKIE_NAME, TOKEN_COOKIE_NAME, USER_COOKIE_NAME } from "@/_constants";
+import {
+  EMAIL_COOKIE_NAME,
+  TOKEN_COOKIE_NAME,
+  USER_COOKIE_NAME,
+} from "@/_constants";
+import { DropdownTip } from "@/_components/dropdownTip";
 
 type Props = {
   searchParams: Promise<{
@@ -42,8 +47,8 @@ export default async function LoginPage(props: Props) {
         title="Login"
         subtitle="Preencha os dados abaixo para logar no sistema."
       />
-      <main className="w-full flex-1">
-        <form action={handleSubmit} className="p-4 flex-col flex gap-2">
+      <main className="w-full p-4 flex flex-col gap-2">
+        <form action={handleSubmit} className="flex-col flex gap-2">
           <label htmlFor="email" className="font-semibold">
             Email
           </label>
@@ -72,6 +77,19 @@ export default async function LoginPage(props: Props) {
             <p className="text-red-500 text-right">Credenciais inválidas.</p>
           )}
         </form>
+        <div className="flex justify-end">
+          <DropdownTip
+            position="right"
+            title="Dica para login"
+            customClasses="w-80"
+          >
+            <div className="p-4 bg-gray-100 border border-gray-300 rounded">
+              <p className="font-semibold mb-2">Use as credenciais abaixo:</p>
+              <p>Email: teste@teste.com</p>
+              <p>Senha: 123</p>
+            </div>
+          </DropdownTip>
+        </div>
       </main>
     </div>
   );
